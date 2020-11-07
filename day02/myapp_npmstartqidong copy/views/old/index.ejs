@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include("./header.ejs") %>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <p>num  <%=num %></p>
+    <ul>
+      <%for(var i = 0; i<arr.length; i++) { %>
+          <li><%=arr[i]%></li>
+        <% }%>
+    </ul>
+    <p>
+      <% if(flag){%>
+          <h1>好</h1>
+          <% }else {%>
+        <h1>不好</h1>
+        <%}%>
+    </p>
+    <p>
+      <%=html%>
+      <%-html%>
+    </p>
+
+
+  </body>
+</html>
