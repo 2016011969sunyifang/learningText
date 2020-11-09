@@ -48,9 +48,16 @@
         methods: {
             submit() {
                 // console.log(this.list);
-                if (this.value != '') {
+                // if (this.value != '' ) {
+                // let reg = RegExp
+                let str = this.value.replace(/(^\s*)|(\s*$)/g, '');
+                if (str == '' || str == null || str == undefined) {
+                    this.value = '';
+                    return
+                } else {
                     this.list.push(this.value);
                     this.value = '';
+                    // console.log('***' + this.value + '***');
                 }
             },
             deleteThis(index) {
