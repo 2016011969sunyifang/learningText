@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <style>
+        .actived {
+            color: red;
+            background-color: aqua;
+        }
+
+        .bbb1 {
+            color: purple;
+            background-color: black;
+        }
+
+        .ccc1 {
+            font-size: 99px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- :  后面一般都是变量 v-bind 同理 下面用flag的布尔值来判断 -->
+    <!-- 也可以用[]来设置样式 -->
+    <!-- 以及行内样式的写法 -->
+    <div id="app">
+        <!-- <div @click="aaa" :class="{actived:flag}">
+            你好
+        </div> -->
+        <div @click="aaa" :class="[bbb,ccc]" :style="styObj">
+            你好
+        </div>
+    </div>
+    <script>
+
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: '你好',
+                flag: false,
+                bbb: '',
+                ccc: 'ccc1',
+                styObj: {
+                    color: "green"
+                }
+            },
+            methods: {
+                aaa() {
+                    // this.flag = !this.flag
+                    // this.bbb = 'bbb1'
+                    if (this.bbb) {
+                        this.bbb = ''
+                    } else {
+                        this.bbb = 'bbb1'
+                    }
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

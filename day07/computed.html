@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <!-- 只要不变 computed就不会重新计算 只有变了才会重新计算(变不变指的是其中计算内的变量) -->
+    <div id="app">
+        <!-- {{message +"  "+name}} -->
+        <!-- {{ fullName2}} -->
+        <!-- {{ fullName3()}} -->
+
+        <h1 @click="bbb">{{ fullName10}}</h1>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "你好",
+                name: '青春',
+                age: 1234
+            }, methods: {
+
+                bbb() {
+                    this.fullName10 = '老大爷  爷老大'
+                }
+
+
+                // fullName3() {
+                //     // this.age++;
+                //     // console.log(this.age);
+                //     console.log('haha');
+                //     return this.message + '  ' + this.name;
+                // }
+
+            },
+            // beforeUpdated() {
+            //     console.log('你好');
+            // }
+            // ,
+            // updated() {
+            //     console.log('你不好');
+            // },
+
+            computed: {
+                // fullName2() {
+                //     console.log('$$$$$$$$$$$$$$$$$$$$$$$');
+                //     return this.message + '  ' + this.name;
+                // }
+                fullName10: {
+
+                    get: function () {
+                        return this.message + ' ' + this.name;
+                    },
+                    set: function (value) {
+                        console.log(value);
+                        var arr = value.split(' ');
+                        console.log(arr);
+                        this.message = arr[0];
+                        this.name = arr[0];
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

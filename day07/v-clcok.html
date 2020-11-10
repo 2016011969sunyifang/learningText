@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 会在还没有渲染出来之前隐藏 有了数据自动消除display：none属性 -->
+    <div v-cloak id="app"> {{message}}</div>
+    <script>
+        setTimeout(() => {
+
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    message: '你好'
+                },
+                methods: {
+
+                }
+            })
+        }, 3000);
+    </script>
+</body>
+
+</html>
