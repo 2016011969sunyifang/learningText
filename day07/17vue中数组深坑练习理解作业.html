@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,47 +15,40 @@
         }
     </style>
 </head>
+
 <body>
     <div id="app">
         <div>
-            <div 
-            v-for="(item,index)  in arr"
-            
-             
-            >
+            <div v-for="(item,index)  in arr">
                 {{item}}
                 <button v-on:click="aaa(index)">改变1000</button>
             </div>
-            
+
         </div>
-       
+
     </div>
 
 
     <script>
         var app = new Vue({
-            el:"#app",
-            data:{
-                flag:false,
-                arr:[
+            el: "#app",
+            data: {
+                flag: false,
+                arr: [
                     100,
                     200,
-                    300 
-                ]
+                    300
+                ],
+                arr1: [997, 998, 999]
             },
-            methods:{
-                aaa(index){
-                    console.log(index)
-                    //这一步是隐藏的 让你打开测试下能不能直接改变  作业是点击按钮改变
-                    //  this.arr[0] =1
-                    //  this.arr[1] =2
-                    //  this.arr[2] =3 
-                     
-                    
+            methods: {
+                aaa(index) {
+                    this.arr.splice(index, 1, this.arr1[index]);
                 }
             }
         })
         console.log(app)
     </script>
 </body>
+
 </html>
