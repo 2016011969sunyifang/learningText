@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for="item in items">
+
+            <h1 @click="apps"> {{item.name}}</h1>
+            <div v-for="itemss in item.itemse">
+                <h2>
+                    {{itemss.text}}++++++++++++++++{{itemss.id}}
+                </h2>
+            </div>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                items: [
+                    {
+                        id: 1,
+                        name: "可乐",
+                        itemse: [
+                            { id: 4, text: "冷冻可乐" },
+                            { id: 5, text: "香草可乐" },
+                        ],
+                    },
+
+                    {
+                        id: 2,
+                        name: "雪碧",
+                        itemse: [
+                            { id: 6, text: "冷冻雪碧" },
+                            { id: 7, text: "青柠雪碧" },
+                        ],
+                    },
+                    {
+                        id: 3,
+                        name: "橙子",
+                        itemse: [
+                            { id: 8, text: "冷冻橙子" },
+                            { id: 9, text: "新鲜橙子" },
+                        ],
+                    },
+                ],
+            },
+            methods: {
+                apps() {
+                    console.log(this.items);
+                    console.log(123);
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

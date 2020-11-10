@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for="(item,index) in list " :key="item.id" @click='aaa'>
+            {{item.text +'--------'+ index +'--------'+ item.id}}
+        </div>
+
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                list: [{
+                    id: '123123123',
+                    text: '你好'
+                },
+                {
+                    id: '123123123123333',
+                    text: '你好1'
+                },
+                {
+                    id: '123123124124123',
+                    text: '你好2'
+                },]
+
+            },
+            methods: {
+                aaa() {
+                    this.list.push({
+                        id: '123124124123',
+                        text: '你好3'
+                    });
+                    this.list[1] = {
+                        id: '1231241241231111111111111111111',
+                        text: '我变了啊'
+                    };
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

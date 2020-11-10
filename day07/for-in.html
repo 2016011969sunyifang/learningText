@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <!-- of
+    数组 item值，index索引
+    in
+    对象 数组
+    对象时：item 键值 name 键名 index 索引 按照位置算 -->
+    <div id="app">
+        <div v-for="(item,name,index) in list " :key="item.id" @click='aaa' @click="aaa">
+            {{item +'--------'+ name  +'--------'+ index}}
+        </div>
+
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                list: {
+                    id: '123123123',
+                    text: '你好',
+                    age: 19,
+                    sam: 11,
+                    haha: 'asdasd'
+                },
+
+            },
+            methods: {
+                aaa() {
+                    console.log(this);
+                    // this.list.name = '你好啊啊啊啊啊啊啊啊啊啊啊啊啊'
+                    this.$set(this.$data.list, '123123123', '123123123')
+                }
+            }
+            // methods: {
+            //     aaa() {
+            //         this.list.push({
+            //             id: '123124124123',
+            //             text: '你好3'
+            //         });
+            //         this.list[1] = {
+            //             id: '1231241241231111111111111111111',
+            //             text: '我变了啊'
+            //         };
+            //     }
+            // }
+        })
+    </script>
+</body>
+
+</html>
