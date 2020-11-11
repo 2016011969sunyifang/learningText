@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div @click="aaa">
+            <!-- <button @click.stop="bbb">阻止使劲按传播</button> -->
+            <!-- <button @click="bbb">阻止使劲按传播</button> -->
+            <!-- <a @click.prevent.stop="bbb" href="http://www.baidu.com">阻止使劲按传播</a> -->
+            <input v-on:keyup.13="aaa">
+        </div>
+        <div>
+            <!-- <input v-on:keyup.enter="aaa"> -->
+            <!-- <input @keydown.enter="aaa"> -->
+            <!-- <input v-on:keyup.delete="aaa"> -->
+        </div>
+    </div>
+    <script>
+        Vue.config.keyCodes.KEYNAME = 1121;
+        var app = new Vue({
+            el: "#app",
+            data: {
+                name: "sam"
+            },
+            methods: {
+                bbb: function () {
+                    alert("bbb");
+                },
+                aaa: function () {
+                    alert("aaa");
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>

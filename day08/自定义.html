@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-a1>a</h1>
+        <h1 v-a2="color1">b</h1>
+        <h1 v-a2="color2">c</h1>
+        <h1 v-a2="color3">d</h1>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                color1: "yellow",
+                color2: "purple",
+                color3: "gray"
+            },
+            directives: {
+                a1(el) {
+                    el.style.color = "red"
+                },
+                a2(el, binding) {
+                    // ==所绑定的属性
+                    el.style.color = binding.value;
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>
