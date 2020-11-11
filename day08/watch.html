@@ -9,61 +9,62 @@
 </head>
 
 <body>
-    <!-- 只要不变 computed就不会重新计算 只有变了才会重新计算(变不变指的是其中计算内的变量) -->
+    <!-- 深度监听旧值新值相同 -->
     <div id="app">
-        <!-- {{message +"  "+name}} -->
-        <!-- {{ fullName2}} -->
-        <!-- {{ fullName3()}} -->
-
-        <h1 @click="bbb">{{ fullName10}}</h1>
+        <div>
+            <button @click="aaa">改变数据a</button>
+            {{a}}
+            <button @click='bbb'>改变数据b</button>
+            {{b}}
+            <button @click="ccc">改变数据c</button>
+            <!-- {{c}} -->
+        </div>
     </div>
     <script>
         var app = new Vue({
             el: "#app",
             data: {
-                message: "你好",
-                name: '青春',
-                age: 1234
-            }, methods: {
-
-                bbb() {
-                    this.fullName10 = '老大爷  爷老大'
+                a: 1,
+                b: {
+                    c: 2
                 }
-
-
-                // fullName3() {
-                //     // this.age++;
-                //     // console.log(this.age);
-                //     console.log('haha');
-                //     return this.message + '  ' + this.name;
-                // }
-
             },
-            // beforeUpdated() {
-            //     console.log('你好');
-            // }
-            // ,
-            // updated() {
-            //     console.log('你不好');
-            // },
+            methods: {
+                aaa: function () {
+                    this.a = 3333
+                },
+                // bbb: function () {
+                //     console.log('bbb函数里面执行了')
+                //     this.b.c = 333333
 
-            computed: {
-                // fullName2() {
-                //     console.log('$$$$$$$$$$$$$$$$$$$$$$$');
-                //     return this.message + '  ' + this.name;
-                // }
-                fullName10: {
-
-                    get: function () {
-                        return this.message + ' ' + this.name;
+                // },
+                bbb: function () {
+                    this.b.c = 444
+                },
+                ccc: function () {
+                    this.b.c = '555'
+                    console.log('cccc函数执行了')
+                },
+            },
+            watch: {
+                a(news, old) {
+                    console.log(news + "news" + old);
+                },
+                b: {
+                    handler(newss, olds) {
+                        console.log(olds);
+                        console.log("b.c: " + newss, olds);
                     },
-                    set: function (value) {
-                        console.log(value);
-                        var arr = value.split(' ');
-                        console.log(arr);
-                        this.message = arr[0];
-                        this.name = arr[0];
-                    }
+                    deep: true, //true 深度监听
+                    immediate: true
+                },
+                c: {
+                    handler(newsss, oldss) {
+                        console.log(oldss);
+                        console.log("b.c: " + newsss, oldss);
+                    },
+                    deep: true, //true 深度监听
+                    immediate: true
                 }
             }
         })

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <input type="checkbox" v-model="checked" @change="checkAll">全选
+            <button @click="antiselect">反选</button>
+        </div>
+        <ul>
+            <li v-for="item,index in cartData" style="list-style:none;">
+                <!-- input点击之后 会把value值传出来 所以model中会有对应的value值 -->
+                <input type="checkbox" :value=item.id v-model="checkArr" @change="checksss">
+                商品ID：{{item.id}}&emsp;&emsp;
+                商品名称：{{item.name}}&emsp;&emsp;
+                商品价格：{{item.price}}&emsp;&emsp;
+                商品数量：<button @click="dec(item,index)">-</button>
+                {{item.num}}<button @click="inc(item)">+</button>&emsp;&emsp;
+                商品小计：{{item.price * item.num}}
+
+            </li>
+        </ul>
+        <h1>一共{{total}}元</h1>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                checked: false,
+                checkArr: []
+                ,
+                cartData: [{
+                    id: 1,
+                    name: '虾米1',
+                    price: 100,
+                    num: 1
+                },
+                {
+                    id: 2,
+                    name: '虾米2',
+                    price: 200,
+                    num: 1
+                }, {
+                    id: 3,
+                    name: '虾米3',
+                    price: 300,
+                    num: 1
+                },
+                ],
+                // total: "",
+            },
+            methods: {
+                dec: function (item, index) {
+                    if (item.num == 1) {
+                        confirm('真不行不买啊') && this.cartData.splice(index, 1)
+                    } else {
+                        item.num--;
+                    }
+                },
+                inc: function (item) {
+                    item.num++;
+                },
+                checkAll: function () {
+                    if (this.checked) {
+                        this.checkArr = [];
+                        this.cartData.forEach(ele => {
+                            this.checkArr.push(ele.id)
+                        })
+                    } else {
+                        this.checkArr = []
+                    }
+                    // console.log(this.checkArr);
+                },
+                checksss: function () {
+                    if (this.checkArr.length == 3) {
+                        this.checked = true;
+                    } else {
+                        this.checked = false;
+                    }
+                    // console.log(this.checkArr);
+                },
+                antiselect: function () {
+                    // console.log('123');
+                    this.cartData.forEach(ele => {
+                        let pos = this.checkArr.indexOf(ele.id);
+                        if (pos > -1) {
+                            this.checkArr.splice(pos, 1);
+                        } else {
+                            this.checkArr.push(ele.id)
+                        }
+                    })
+                    // console.log(this.checkArr);
+                }
+            },
+            //总价
+            computed: {
+                total: function () {
+                    let sum = 0;
+                    this.cartData.forEach(ele => {
+                        let pos = this.checkArr.indexOf(ele.id);
+                        if (pos > -1) {
+                            sum += ele.num * ele.price;
+                        }
+                    });
+                    return sum;
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

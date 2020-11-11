@@ -1,6 +1,7 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
-
+// app.use(cors());
 app.listen(9002, () => {
     console.log('服务器启动成功');
 })

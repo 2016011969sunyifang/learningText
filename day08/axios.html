@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="aaa">发送axios请求1</button>
+        <button @click="bbb">发送axios请求2</button>
+        {{username}}
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                username: "",
+            },
+            methods: {
+                aaa() {
+                    axios.get('http://localhost:5001/api').then(res => {
+                        console.log('axios请求成功');
+                        console.log(res);
+                    })
+                },
+                bbb() {
+                    axios.post('http://localhost:5001/api/b', {
+                        username: "123123123",
+                        password: "123123123",
+                    }).then(res => {
+                        console.log(res);
+                        this.username = res.data.username;
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
