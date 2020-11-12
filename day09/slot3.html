@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <a1>
+            <div slot-scope="props">
+                <h1>{{props.text}}</h1>
+            </div>
+        </a1>
+    </div>
+    <script>
+
+        Vue.component("a1", {
+            template: "<div><slot :text='name'></slot></div>",
+            data() {
+                return {
+                    name: 'sam'
+                }
+            }
+
+        })
+
+
+        var app = new Vue({
+            el: "#app",
+            props: [],
+            components: {},
+            beforeCreate() { },
+            created() { },
+            beforeMount() { },
+            mounted() { },
+            beforeUpdate() { },
+            updated() { },
+            beforeDestroy() { },
+            destroyed() { },
+            data: {
+                // name: '你好'
+            },
+            methods: {
+            },
+            computed: {},
+            watch: {},
+            filters: {},
+        })
+    </script>
+</body>
+
+</html>

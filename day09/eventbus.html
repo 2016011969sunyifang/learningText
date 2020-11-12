@@ -1,0 +1,10 @@
+<body>
+    <div id="app">
+        <zj_one></zj_one>
+        <hr /> 1234
+        <zj_two></zj_two>
+        <hr /> <button @click='destoryBus'>炸掉事件中心</button>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script type="text/javascript"> // 定义事件中心 const eventBus = new Vue() Vue.component('zj_one',{ data: function(){ return { data: 100 } },template: ` <div><div>{{data}}</div> <div><button @click='fn1'>点我让对方受到1点伤害</button> </div> </div> `, methods:{ fn1: function(){ eventBus.$emit('zj2_event',1) } },mounted:function(){ eventBus.$on('zj1_event',val => this.data -= val) } })Vue.component('zj_two',{ data: function(){ return { data: 100 } },template: ` <div><div>{{data}}</div> <div><button @click='fn2'>点我让对方受到2点伤害</button> </div> </div> `, methods:{ fn2: function(){ eventBus.$emit('zj1_event',2) } },mounted:function(){ eventBus.$on('zj2_event',val => this.data -= val) } })new Vue({ el: '#app', methods: {

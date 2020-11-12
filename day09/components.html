@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="aaa('step1')">我是第一个</button>
+        <button @click="aaa('step2')">我是第二个</button>
+        <button @click="aaa('step3')">我是第三个</button>
+        <step1 v-if="aaaa"></step1>
+        <step2 v-if="bbbb"></step2>
+        <step3 v-if="cccc"></step3>
+        <!-- <component :is="name"></component> -->
+    </div>
+    <script>
+
+        var step1 = {
+            template: '<h1>我是第一个组件</h1>'
+        }
+        var step2 = {
+            template: '<h1>我是第二个组件</h1>'
+        }
+        var step3 = {
+            template: '<h1>我是第三个组件</h1>'
+        }
+
+
+
+        var app = new Vue({
+            el: "#app",
+            props: [],
+            components: { step1, step2, step3, },
+            created() { },
+            beforeMount() { },
+            mounted() { },
+            beforeUpdate() { },
+            updated() { },
+            beforeDestroy() { },
+            destroyed() { },
+            data: {
+                name,
+                aaaa: true,
+                bbbb: false,
+                cccc: false,
+            },
+            methods: {
+                // aaa(haha) {
+                //     this.name = haha;
+                // },
+                // bbb() {
+                //     this.name = "step2";
+                // },
+                // ccc() {
+                //     this.name = "step3";
+                // },
+                aaa(haha) {
+                    // this.name = haha;
+                    if (haha === 'step1') {
+                        this.aaaa = true;
+                        this.bbbb = false;
+                        this.cccc = false;
+                    }
+                    if (haha === 'step2') {
+                        this.aaaa = false;
+                        this.bbbb = true;
+                        this.cccc = false;
+                    }
+                    if (haha === 'step3') {
+                        this.aaaa = false;
+                        this.bbbb = false;
+                        this.cccc = true;
+                    }
+                },
+            },
+            computed: {},
+            watch: {},
+            filters: {},
+        })
+    </script>
+</body>
+
+</html>

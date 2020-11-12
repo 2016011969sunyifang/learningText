@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p ref="p1">你好1</p>
+        <p ref="p2">你好2</p>
+        <button @click="aaa">你好2</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            props: [],
+            components: {},
+            created() { },
+            beforeMount() { },
+            mounted() { },
+            beforeUpdate() { },
+            updated() { },
+            beforeDestroy() { },
+            destroyed() { },
+            data: {
+                name: '123123'
+            },
+            methods: {
+                aaa() {
+                    console.log(this.$refs);
+                    this.$refs.p1.innerText = '青春';
+                },
+                bbb() {
+
+                }
+            },
+            computed: {},
+            watch: {},
+            filters: {},
+        })
+    </script>
+</body>
+
+</html>

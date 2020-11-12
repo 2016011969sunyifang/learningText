@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <a1>
+            <h1 slot="down">我是最下面</h1>
+            <h1 slot="up">我是最上面</h1>
+            <p>123123123123</p>
+            <p>123123123123</p>
+        </a1>
+    </div>
+    <script>
+
+        Vue.component("a1", {
+            template: "<div><h1><slot name='up' ></slot></h1><h2><slot></slot><slot></slot><slot></slot></h2><h3><slot name='down'></slot></h3></div>"
+        })
+
+
+        var app = new Vue({
+            el: "#app",
+            props: [],
+            components: {},
+            beforeCreate() { },
+            created() { },
+            beforeMount() { },
+            mounted() { },
+            beforeUpdate() { },
+            updated() { },
+            beforeDestroy() { },
+            destroyed() { },
+            data: {
+            },
+            methods: {
+            },
+            computed: {},
+            watch: {},
+            filters: {},
+        })
+    </script>
+</body>
+
+</html>
