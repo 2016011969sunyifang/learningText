@@ -1,14 +1,7 @@
 
 <template>
   <div>
-    <h1>我是模板</h1>
-    <button @click="aaa">第一个跳转</button> |
-    <button @click="bbb">第二个跳转query</button> |
-    <button @click="ccc">第三个跳转params</button> |
-    <button @click="ddd(value)">第四个跳转动态路由</button> |
-    <router-link :to="{ name: 'user', params: { id: 123 } }"
-      >router-link 跳转</router-link
-    >
+    <h1>我是首页</h1>
   </div>
 </template>
 
@@ -17,7 +10,7 @@
 <script>
 export default {
   //组件名字
-  name: "moban",
+  name: "index",
   //接收父组件给的东西 type是接收什么东西  default 默认值
   props: {
     list: {
@@ -42,16 +35,7 @@ export default {
   //方法 函数写这里
   methods: {
     aaa() {
-      this.$router.push("/login");
-    },
-    bbb() {
-      this.$router.push({ path: "login", query: { name: "松江" } });
-    },
-    ccc() {
-      this.$router.push({ name: "user", params: { id: "123123" } });
-    },
-    ddd(id) {
-      this.$router.push("/user/" + id);
+      console.log("aaa");
     },
   },
   //计算属性
@@ -83,10 +67,6 @@ export default {
   updated() {},
   //组件路由守卫enter
   beforeRouteEnter(to, from, next) {
-    console.log("我是嗯嗯");
-    console.log(to);
-    console.log(from);
-    console.log(next);
     next((vm) => {});
     // 注意，在路由进入之前，组件实例还未渲染，所以无法获取this实例，只能通过vm来访问组件实例
   },
@@ -98,10 +78,6 @@ export default {
   //组件路由守卫离开
   beforeRouteLeave(to, from, next) {
     // 离开当前路由页面时调用
-    console.log("我是嗯嗯1");
-    console.log(to);
-    console.log(from);
-    console.log(next);
     next();
   },
 };

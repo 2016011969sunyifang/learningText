@@ -49,10 +49,10 @@ export default {
   //以下是生命周期
   //组件创建之前  new操作符桥梁函数return 之前
   beforeCreate() {
-    this.name = this.$route.query.name;
-    console.log(this);
-    console.log(this.name);
-    console.log(this.$route.query.name);
+    // this.name = this.$route.query.name;
+    // console.log(this);
+    // console.log(this.name);
+    // console.log(this.$route.query.name);
   },
   //组件创建之后
   created() {

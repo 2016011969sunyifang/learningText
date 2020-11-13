@@ -1,12 +1,15 @@
 
 <template>
   <div id="app">
-    <div>今天来学脚手架</div>
+    <div>今天复习路由</div>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/login">login</router-link> |
-      <router-link to="/moban">moban</router-link>
+      <router-link to="/moban">moban</router-link> |
+      <router-link to="/user">user</router-link> |
+      <router-link to="/add">add</router-link> |
+      <router-link to="/index">index</router-link>
     </div>
     <router-view> </router-view>
   </div>
