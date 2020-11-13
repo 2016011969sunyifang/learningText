@@ -1,6 +1,15 @@
 
 <template>
-  <div>我是模板</div>
+  <div id="app">
+    <div>今天来学脚手架</div>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> |
+      <router-link to="/login">login</router-link> |
+      <router-link to="/moban">moban</router-link>
+    </div>
+    <router-view> </router-view>
+  </div>
 </template>
 
 
@@ -31,11 +40,7 @@ export default {
     };
   },
   //方法 函数写这里
-  methods: {
-    aaa() {
-      console.log("aaa");
-    },
-  },
+  methods: {},
   //计算属性
   computed: {},
   //侦听器

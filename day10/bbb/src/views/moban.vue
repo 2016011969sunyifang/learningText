@@ -1,6 +1,10 @@
 
 <template>
-  <div>我是模板</div>
+  <div>
+    <h1>我是模板</h1>
+    <button @click="aaa">第一个跳转</button>
+    <button @click="bbb">第二个跳转query</button>
+  </div>
 </template>
 
 
@@ -33,7 +37,14 @@ export default {
   //方法 函数写这里
   methods: {
     aaa() {
-      console.log("aaa");
+      // console.log("aaa");
+      this.$router.push("/login");
+      // console.log(this);
+      // console.log(this.value);
+    },
+    bbb() {
+      // console.log("aaa");
+      this.$router.push({ path: "login", query: { name: "松江" } });
     },
   },
   //计算属性

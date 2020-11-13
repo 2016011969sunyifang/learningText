@@ -14,8 +14,17 @@ const routes = [
     path: '/about',
     name: 'About',
     component: () => import('../views/About.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/login.vue')
+  },
+  {
+    path: '/moban',
+    name: 'moban',
+    component: () => import('../views/moban.vue')
   }
-
 ]
 
 const router = new VueRouter({

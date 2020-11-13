@@ -1,6 +1,9 @@
 
 <template>
-  <div>我是模板</div>
+  <div>
+    我是login
+    {{ name }}
+  </div>
 </template>
 
 
@@ -8,7 +11,7 @@
 <script>
 export default {
   //组件名字
-  name: "moban",
+  name: "login",
   //接收父组件给的东西 type是接收什么东西  default 默认值
   props: {
     list: {
@@ -28,14 +31,11 @@ export default {
   data() {
     return {
       value: "1",
+      name: "",
     };
   },
   //方法 函数写这里
-  methods: {
-    aaa() {
-      console.log("aaa");
-    },
-  },
+  methods: {},
   //计算属性
   computed: {},
   //侦听器
@@ -48,13 +48,24 @@ export default {
   },
   //以下是生命周期
   //组件创建之前  new操作符桥梁函数return 之前
-  beforeCreate() {},
+  beforeCreate() {
+    this.name = this.$route.query.name;
+    console.log(this);
+    console.log(this.name);
+    console.log(this.$route.query.name);
+  },
   //组件创建之后
-  created() {},
+  created() {
+    // this.name = this.$route.query.name;
+  },
   //页面渲染之前
   beforeMount() {},
   //页面渲染之后
-  mounted() {},
+  mounted() {
+    // console.log("我来到了login");
+    // console.log(this.$route.query);
+    // this.name = this.$route.query.name;
+  },
   //页面销毁之前
   beforeDestroy() {},
   //页面销毁之后
